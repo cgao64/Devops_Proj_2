@@ -1,0 +1,10 @@
+- hosts: all
+  tasks: 
+    -name: stop container if it exists
+     shell: docker container stop dockeransible
+    -name: remove container if it exists
+     shell: docker container rm dockeransible
+    -name: remove docker image
+     shell: docker image rm -f cgao64/docker-webapp3
+    - name: create new container
+      shell: docker run -itd --name dockeransible -p 9000:80 cgao64/docker-webapp3
