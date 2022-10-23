@@ -1,0 +1,17 @@
+Steps:
+1. Launch 3 VirtualBox machines using vagrant (Jenkins+Ansible+Webapp)
+2. Ensure Docker is installed on Ansible and WebApp server + SSH connection
+3. 
+----------------------------------------------------------------
+Jenkins:
+a) git checkout
+b) send codes(Dockerfile+playbooks) to Ansible server over SSH
+----------------------------------------------------------------
+Ansible:
+c) build Docker image
+d) push Docker image to DocerHub
+----------------------------------------------------------------
+WebApp:
+e) Run container on webapp_server by pulling the same image from DockerHub
+
+4. Rectify any isues that arrives
