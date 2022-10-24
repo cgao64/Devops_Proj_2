@@ -1,0 +1,20 @@
+SSH Server - Jenkins
+Exec Command: 
+rsync -avh /var/lib/jenkins/workspace/docker-webapp3/* root@192.168.202.51:/opt
+------------------------------------------------------------------------------------------------
+SSH Server - Ansible
+Exe command:
+cd /opt
+
+docker image build -t $JOB_NAME:v1.$BUILD_ID .
+docker image tag $JOB_NAME:v1.$BUILD_ID cgao64/$JOB_NAME:v1.$BUILD_ID
+docker image tag $JOB_NAME:v1.$BUILD_ID cgao64/$JOB_NAME:latest
+
+docker image push cgao64/$JOB_NAME:v1.$BUILD_ID
+docker image push cgao64/$JOB_NAME:latest
+
+docker image rmi $JOB_NAME:v1.$BUILD_ID cgao64/$JOB_NAME:v1.$BUILD_ID cgao64/$JOB_NAME:latest
+------------------------------------------------------------------------------------------------
+SSH Server - Ansible
+Exe command:
+ansible-playbook /vagrant/webapp.yml
